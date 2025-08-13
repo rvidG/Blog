@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    fetch('README.md')
+      .then(response => response.text())
+      .then(markdown => {
+        const html = marked.parse(markdown); // parse to HTML
+        document.getElementById('content').innerHTML = html;
+      })
+  </script>
+</body>
+</html>
